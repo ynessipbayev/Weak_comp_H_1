@@ -1,0 +1,509 @@
+ \documentclass[reqno]{amsart}
+\usepackage{amsmath,cite,amsfonts,amssymb,amsthm,amscd,latexsym}
+
+\usepackage{array}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{comment}
+ \usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{a4wide}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{theorem}[thm]{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{corollary}[thm]{Corollary}
+\newtheorem{proposition}[thm]{Proposition}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{question}{Question}
+\newtheorem{example}[thm]{Example}
+\newtheorem*{question*}{Question}
+\newcommand{\cA}{{\mathcal A}}
+\newcommand{\cB}{{\mathcal B}}
+\newcommand{\cC}{{\mathcal C}}
+\newcommand{\cD}{{\mathcal D}}
+\newcommand{\cE}{{\mathcal E}}
+\newcommand{\cF}{{\mathcal F}}
+\newcommand{\cG}{{\mathcal G}}
+\newcommand{\cH}{{\mathcal H}}
+\newcommand{\cI}{{\mathcal I}}
+\newcommand{\cJ}{{\mathcal J}}
+\newcommand{\cK}{{\mathcal K}}
+\newcommand{\cL}{{\mathcal L}}
+\newcommand{\cM}{{\mathcal M}}
+\newcommand{\cN}{{\mathcal N}}
+\newcommand{\cO}{{\mathcal O}}
+\newcommand{\cP}{{\mathcal P}}
+\newcommand{\cQ}{{\mathcal Q}}
+\newcommand{\cR}{{\mathcal R}}
+\newcommand{\cS}{{\mathcal S}}
+\newcommand{\cT}{{\mathcal T}}
+\newcommand{\cU}{{\mathcal U}}
+\newcommand{\cV}{{\mathcal V}}
+\newcommand{\cW}{{\mathcal W}}
+\newcommand{\cX}{{\mathcal X}}
+\newcommand{\cY}{{\mathcal Y}}
+\newcommand{\cZ}{{\mathcal Z}}
+\newcommand{\bM}{{\mathbb{M}}}
+\newcommand{\bC}{{\mathbb{C}}}
+ \usepackage{color}
+ \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\usepackage{mathtools}
+ %\newcommand{\vnorm}[1]{\left\lVert#1\right\rVert_{\rm var}}
+\usepackage{hyperref}                   % Reference
+\hypersetup{colorlinks,%                % Reference color setup
+    linkcolor=blue,%
+    citecolor=blue}
+\usepackage{etoolbox}
+
+%\AtBeginEnvironment{tabular}{\fontsize{4pt}{2pt}}
+
+
+\newcommand{\tblue}[1]{\textcolor{blue}{#1}}
+\newcommand{\tred}[1]{\textcolor{red}{#1}}
+\newcommand{\tgreen}[1]{\textcolor{green}{#1}}
+\newcommand{\tyellow}[1]{\textcolor{yellow}{#1}}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes,trees,positioning}
+\usetikzlibrary{arrows.meta}
+\tikzset{%%
+  >={To[length=3pt]}
+  }
+\usepackage{refcheck}
+%\usepackage{tikz}
+%\usetikzlibrary{shadows}
+
+  \usepackage{diagbox}
+\usepackage{caption}
+\usepackage{makecell}
+ \usepackage{float}
+ 
+ 
+
+\numberwithin{equation}{section}
+
+
+
+ 
+
+\begin{document}
+
+\title[Weak compactness in $H_1$]{Weak compactness in non-commutative $H_1$}
+
+
+
+
+%\author[Y. Nessipbayev]{Yerlan Nessipbayev}
+%\address{School of Mathematics and Statistics, University of New South Wales, Kensington, 2052, Australia and\\
+%Institute of Mathematics and Mathematical Modeling, 050010 Almaty, Kazakhstan}
+%\email{{\color{blue}y.nessipbayev@unsw.edu.au}}
+%
+%
+%
+%\author[F. Sukochev]{Fedor Sukochev}
+%\address{School of Mathematics and Statistics, University of New South Wales, Kensington, 2052, Australia and
+%North-Ossetian State University, Vladikavkaz, 362025 Russia}
+%\email{{\color{blue}f.sukochev@unsw.edu.au}}
+
+
+\begin{abstract}
+We 
+\end{abstract}
+
+\subjclass[2010]{46L52, 47B07, 46L10, 46B85.}
+\keywords{noncommutative symmetric space 
+}
+
+
+%\thanks{J. Huang was supported by the NNSF of China (No.12031004).
+%Y. Nessipbayev was supported by the Science Committee of the Ministry of Science and Higher Education of the Republic of Kazakhstan (Grant No. AP14869301).
+%M. Pliev was supported by the Ministry of Science and Education of Russian Federation (grant number 075-02-2022-896).
+%F. Sukochev's research was supported by the  Australian Research Council  (FL170100052).}
+%\maketitle
+
+
+
+
+\section{Introduction}
+
+{\color{blue} 
+How can we identify a martingale $(f_n)_{n\ge0}$ with respect to $(\mathcal{F}_n)_n$ and $\mathcal{F}_n \uparrow \mathcal{F}$ with an integrable function $f$ with respect to $\mathcal{F}?$
+
+The answer is given by Doob's second martingale convergence theorem: if $(f_n)_n$ is uniformly integrable, then there is such $f$ integrable with respect to $\mathcal{F}$ such that $f_n \to f$ both a.e. and in $L_1(\Omega, \mathcal{F}, \mu).$
+}
+
+
+Let $(\Omega, \mathcal{F}, \mu)$ be a complete probability space, and let $\mathcal{F}_1 \subset \mathcal{F}$ be a complete $\sigma$-sub-field. Let $f\in L^1(\Omega, \mathcal{F}, \mu)$ be any (complex-valued) function.
+One may define a complex measure $\nu$ of $(\Omega, \mathcal{F}_1)$ via
+$$\nu(A)=\int_A fd\mu, \quad A\in \mathcal{F}_1.$$
+Note that $\nu$ is absolutely continuous with respect to $\mu$ (or its restriction $\mu|_{\mathcal{F}_1}$) and both are defined on the probability space $(\Omega, \mathcal{F}_1).$ Therefore, by the Radon-Nikodym theorem there is a unique up to $\mu$-null sets measurable with respect to $\mathcal{F}_1$ complex-valued function $g$ on $\Omega$ such that
+$$\nu(A)=\int_A gd\mu, \quad A\in \mathcal{F}_1.$$
+ Note that $f$ itself is not necessarily measurable with respect to $\mathcal{F}_1$ (wrong).   Note that $g$ itself is not necessarily measurable with respect to $\mathcal{F}.$ 
+ This function $g$ is called the conditional expectation of $f$ with respect to $\mathcal{F}_1$ and denoted 
+ $$g=E(f|\mathcal{F}_1)=E_{\mathcal{F}_1}(f).$$
+
+
+{\bf Example.} If $A$ is an event, then $E(f|A)=\frac{1}{\mu(A)}\int_\Omega f\cdot \chi_A d\mu.$
+
+Let us look at finite $\sigma$-algebras (all the same). Let $\Omega=[0,1], A=[0, 1/3].$ Then $\mathcal{F}(A)$ is a $\sigma$-algebra generated by $A,$ i.e. $\mathcal{F}(A)=\{\emptyset, [0,1/3], (1/3,1], [0,1]\}.$ Let $f$ be any integrable function in $L^1([0,1], \mathcal{B}([0,1]), \mu),$ say $f(x)=\frac{1}{x+1}.$ Then the conditional expectation of $f$ with respect to $\mathcal{F}(A)$ is the following step function:
+$$
+\begin{aligned}
+E(f|\mathcal{F}(A))(w)= & 
+\begin{cases}
+    \frac{1}{\mu([0,1/3])} \int_{[0,1/3]} fd\mu & \text{if} \ w\in [0,1/3] \\
+    \frac{1}{\mu((1/3,1])} \int_{(1/3,1]} fd\mu & \text{if} \ w\in (1/3,1].
+\end{cases}
+\end{aligned}
+$$
+Up to $\mu$-null sets (or a.e.). It is easy to check that $E(f)=\int_\Omega f=E(E(f|\mathcal{F}(A)))=\int_\Omega E(f|\mathcal{F}(A)).$ In general,
+$$E(f|\mathcal{F}(A))=\sum_{B\in \mathcal{F}(A)} \frac{1}{|B|} \int_B fd\mu \cdot \chi_B, \quad f\in L_\infty(0,1).$$
+
+{\bf Regularity.} Given $(\mathcal{F}_n)_n \uparrow$ and $f\in L_\infty(\Omega)$ non-negative we have
+$$E(f|\mathcal{F}_n) \le const \cdot E(f|\mathcal{F}_{n-1}).$$
+Then $(\mathcal{F}_n)_n $ is a regular filtration.
+
+Given $f\in L_1(\Omega)$ we have $E_n \circ E_m (f)=E_{n \wedge m}(f).$
+
+Clearly, given an increasing sequence of complete $\sigma$-sub-fields we may construct a sequence $g_n$ of measurable with respect to $\mathcal{F}_n$ functions. For simplicity denote $f_n=g_n,$ then the so constructed sequence $(f_n)_n$ of measurable functions with respect to $\mathcal{F}_n$ is called a martingale (generated by $f$ and we denote $f=(f_n)_n$).
+
+We want to characterize weakly compact sets in non-commutative $\mathcal{H}^1$ spaces by using the classical Dunford--Pettis criterion of weak compactness in $L_1[0,1].$ We also show that a non-commutative $\mathcal{H}^1$ is weakly sequentially complete.
+
+In this section we want to introduce the concepts of martingales and the decompositions and the convergences of martingales. Let $(\Omega, \mathcal{F}, \mu)$ be a complete probability space with a family $\left\{\mathcal{F}_n\right\}_{n \geq 0}$ of sub- $\sigma$-fields satisfying the usual conditions, i.e. $\left\{\mathcal{F}_n\right\}$ is increasing, each $\left(\Omega, \mathcal{F}_n, \mu\right)$ is complete, and $\mathcal{F}=\bigvee_n \mathcal{F}_n$.
+
+\begin{definition}
+Definition 1.3.1 Let $Q=\left(Q_n\right)_{n \geq 0}$ be a process. $Q$ is said to be adapted, if $Q_n$ is $\mathcal{F}_n$ measurable, for all $n$; is said to be (strictly) predictable, if $Q_n$ is $\mathcal{F}_{(n-1) \vee 0^{-}}$ measurable, for all $n$.
+\end{definition}
+
+\begin{definition}
+Definition 1.3.2 Let $f=\left(f_n\right)_{n \geq 0}$ be an adapted process. $f$ is said to be a martingale (with respect to $\left\{\mathcal{F}_n\right\}_{n \geq 0}$ ) if each $f_n \in L^1$, and
+$$
+E\left(f_{n+1} \mid \mathcal{F}_n\right)=f_n, \quad n=0,1,2, \cdots ;
+$$
+is said to be a super-(or sub-)martingale, if the equality above is replaced by $\leq$ (or $\geq$ ).
+\end{definition}
+
+
+{\bf Remark.} $E(f_n|\mathcal{F}_n)=f_n$ and $E(f_n|\mathcal{F}_{n+1})=f_n$ and $E(f_n|\mathcal{F}_{n+m})=f_n$ a.e. for all $n,m \ge 0.$
+
+$(f_n)_{n\ge 0}$ is a martingale wrt filtration $\mathcal{G}_n=\sigma(f_0,\ldots, f_n)$ ($\sigma$-algebra generated by first $n$ random variables).
+
+$$E(f_n)=E[E(f_{n+1}|\mathcal{F}_n)]=E(f_{n+1}), n\ge 0$$
+$$E(f_n)=E(f_0), \quad n\ge0.$$
+Another property: 
+$$E(fg|\mathcal{F}_1)=gE(f|\mathcal{F}_1), \quad f\in L^p, g\in L^{p'}(\mathcal{F}_1), \quad 1\le p\le \infty,$$
+meaning that $g$ is $\mathcal{F}_1$ measurable and $g\in L^{p'}.$
+Next,
+$$E(f_{n+m}|\mathcal{F}_n)=f_n, \quad m,n \ge 0$$
+Proof. By induction (using the tower property of conditional expectations) $E(f_{n+m+1}|\mathcal{F}_n)=E[E(f_{n+m+1}|\mathcal{F}_{n+m})|\mathcal{F}_n]=E[f_{n+m}|\mathcal{F}_n]=f_n.$
+
+{\bf Remark.} Obviously ($f_n$ is measurable wrt $\mathcal{F}_n$ implies $f_n$ is measurable wrt $\mathcal{F}_{n+1}$), $f=\left(f_n\right)_{n \geq 0}$ is a supermartingale, if and only if $-f$ is a submartingale.
+
+{\bf Example 1.} Let $f \in L^1$, and $f_n=E\left(f \mid \mathcal{F}_n\right), n \geq 0$. Then $f=\left(f_n\right)_{n \geq 0}$ is a martingale. Let $\left(d_n\right)_{n \geq 0}$ be an adapted process such that $d_n \in L^1$ and $E\left(d_n \mid \mathcal{F}_{n-1}\right)=0, n \geq 1$, then $f=\left(f_n\right)_{n \geq 0}$ with $f_n=\sum_0^n d_k$, is a martingale. Inversely, each martingale 
+$f = (f_n)_{n \geq 0}$ could be generated in such a way. In fact, denote $d_n = \triangle_{n} f = f_n - f_{n-1}$, $n \geq 1$, where $f_{-1}$ is meant $0$ like we will always do for any process, then $(d_n)_{n > 0}$ is an adapted process such that $\mathbb{E}(d_n | \mathcal{F}_{n-1}) = 0$, $n \geq 1$, and $f_n = \sum_{k=0}^{n} d_k$, $n \geq 0$.
+
+\bigskip
+
+First, we define the simplest classes of martingales, or super-, or submartingales.
+
+\begin{definition}
+Definition 1.3.3 Let $1 \leq p \leq \infty$. For any martingale, or super-, or submartingale $f=\left(f_n\right)_{n \geq 0}$, denote $\|f\|_p=\sup _n\left\|f_n\right\|_p$. When $\|f\|_p<\infty$, we say that $f$ is a $L^p$-martingale, $L^p$-supermartingale or $L^p$-submartingale (we also say that $f$ is a $L^p$-bounded martingale, or super-(sub-)martingale), in symbols $f \in L^p$. When $f_n=$ $E\left(f \mid \mathcal{F}_n\right)$, for all $n$, for some $f \in L^p$, we say that $f$ is a $L_u^p$-martingale.
+\end{definition}
+
+{\bf Remark.} There is a slight confusion for the symbol $L^p$ which denotes the spaces of martingales (or super-, or sub-martingales), as well as the usual Lebesgue spaces. The confusion is not essential in the case $1<p<\infty$. We will see in 1.3 .2 that when $1<p<\infty, L^p=L_u^p$, and $\|f\|_p=\left\|f_{\infty}\right\|_p$, but 
+$L_u^1 \subset\neq L^1$ in general. 
+For all $f \in L^1$, we have that $f_{\infty}$ exists pointwise, and $f_{\infty} \in L^1$, and $\left\|f_{\infty}\right\|_1 \leq\|f\|_1$. Furthermore, the equality holds if and only if $f \in L_u^1$.
+
+Sometimes, when a martingale, or super-, or submartingale has a limit $f_{\infty}$, we want to know if $\left(f_n\right)_{0 \leq n \leq \infty}$ is still a martingale, or super-(sub-) martingale in following sense.
+
+
+Thm 1.3.2.8. If $(f_n)_{n\ge0}$ is $L^1$-martingale (that is, $\sup_{n\ge0}\|f_n\|_1<\infty$) then there exist $f_\infty \in L^1$ and $E(|f_\infty|) \le \|f\|_1,$ where $f=(f_n)_{n\ge0}$ and $f\in L^1$ with $\|f\|_1=\sup_{n\ge0}\|f_n\|_1=\sup_{n\ge0}E(|f_n|).$
+
+Now, if in addition, $f_n= E\left(f_{\infty} \mid \mathcal{F}_n\right), \forall n \geq 0,$ then $f=\left(f_n\right)_{0 \leq n \leq \infty}$ is also a martingale with respect to $(\mathcal{F}_n)_{0\le n\le \infty},$ where $\mathcal{F}_\infty=\vee_{n\ge0} \mathcal{F}_n=\mathcal{F}.$
+
+\begin{definition}
+Definition 1.3.4 $f=\left(f_n\right)_{0 \leq n \leq \infty}$ is called a martingale, or super-, or submartingale, if $\left(f_n\right)_{n \geq 0}$ is so, and
+$$
+f_n=(\text { or } \geq \text {, or } \leq) E\left(f_{\infty} \mid \mathcal{F}_n\right), \forall n \geq 0 .
+$$
+\end{definition}
+
+
+{\bf Remark.} In the martingale case, $f_n=E\left(f_{\infty} \mid \mathcal{F}_n\right)$ implies $E\left(f_m \mid \mathcal{F}_n\right)=f_n$, for all $m \geq n$, in fact $E\left(f_{\infty} \mid \mathcal{F}_n\right)=E\left(E\left(f_{\infty} \mid \mathcal{F}_m\right) \mid \mathcal{F}_n\right)=E\left(f_m \mid \mathcal{F}_n\right)$, for all $m \geq n$.
+
+There is also martingale $L_u^1$ space (which is a proper subspace of martingale $L^1$). Given a martingale $(f_n)_{n\ge0}$ and if there is $f\in L^1$ such that $f_n=E(f|\mathcal{F}_n)$ for every $n\ge0,$ we say that $f\in L_u^1.$ In this case, we identify $f=f_\infty$ and $E(|f_\infty|)=\|f\|_1.$ 
+
+
+\subsection{BMO Martingales. Section 4, p.129 of \cite{Long}}
+Let $(\Omega, \mathcal{F}, \mu, \{F_{n}\}_{n\geq 0})$ be as defined in §2.1. The Banach spaces $BMO_{a}, 1 \leq a < \infty$, are defined as follows:
+\[
+BMO_{a} = \left\{ f = (f_n)_{n\ge0} \in L_u^a: \|f\|_{BMO_a}=\sup_{n}\|E(|f - f_{n-1}|^a|\mathcal{F}_n)^{\frac1a}\|_{\infty} < \infty \right\},
+\]
+here the $f$ in $|f - f_{n-1}|^{a}$ means $f_{\infty}$. (We often use the same symbol $f$ to denote a martingale $f = (f_{n})_{n\geq 0}$ or $f_\infty$ when it has meaning.) Sometimes, for the sake of simplicity, we assume $f_{0} = 0$ for $f \in BMO_{a}$. Obviously, this is only a non-essential convention. With $f - f_{0}$ replacing $f$, we get a new BMO martingale $f - f_{0}$ from the original $f \in BMO$ without any influence to all problems we want to consider owing to the fact
+\[
+\|f - f_{0}\|_{BMO_{a}} + \|f_{0}\|_{\infty} \approx \|f\|_{BMO_{a}}.
+\]
+This fact can be seen as follows. Only the case $n = 0$ in the definition is concerned:
+\[
+E(|f|^a|\mathcal{F}_0)^{\frac1a} \le E(|f-f_0|^a|\mathcal{F}_0)^{\frac1a}+E(|f_0|^a|\mathcal{F}_0)^{\frac1a} \le 3 E(|f|^a|\mathcal{F}_0)^{\frac1a}.
+\]
+We have shown that both $BMO_{1}$ and $BMO_{2}$ are the Banach dual space of $H^{1}$ in §2.5, §2.2. Based mainly on this duality and something else, the space BMO played a remarkable role in classical analysis. We shall show the similar significance of BMO in martingale setting in this chapter and next ones. For example, we will show that BMO is a good space in operator actions (see this chapter and Chapter 5), and that BMO can be used in weight theory (see Chapter 6). But in this chapter, we mainly study the BMO itself. What we want to introduce are following: John-Nirenberg's theorem (one of the most important theorems in BMO theory) which implied $BMO_{a} = BMO_{1}$, for all $a \geq 1$; some other characterizations of BMO; the BLO (Bounded Lower Oscillation) decomposition of BMO; Carleson measure theory and commutator theory related to BMO; the distance of $f \in BMO$ to $L^{\infty}$, etc.
+
+
+\subsection{Weak compactness in $\mathcal{H}_1$}
+In this section, we want to establish the $H^{1}$ version of several familiar facts about weak compactness and convergence in $L^{1}$. The main ones are characterizing weakly relatively compact subsets of $H^{1}$ and proving the weak sequential completeness of $H^{1}$. We need BMO's following characterization formulated in §4.2, i.e.: $\varphi \in \text{BMO} = \text{BMO}_{1} = \text{BMO}_{2}$, if and only if there exist a random variable $\eta$ and a sequence $\{\xi_{n}\}_0^\infty$ of random variables such that (see \cite[Theorem 4.2.8]{Long})
+$$\varphi=\eta +\sum_{n=0}^{\infty} E(\xi_n|\mathcal{F}_n),$$
+$$\norm{|\eta|+\sum_{n=0}^{\infty}|\xi_n| }_\infty \approx \|\varphi\|_{BMO}=\|\varphi\|_*.$$
+
+Based on it, the duality between $H^{1}$ and $\text{BMO}$ could be written as
+\[
+(f, \varphi) = E(f\eta) + \sum_{n=0}^{\infty} E(f_{n}\xi_{n}), \quad \forall f = (f_{n})_{n\geq 0} \in H^{1}, \quad \forall \varphi \in \text{BMO}, 
+\]
+where the series is absolutely convergent (see Corollary 4.2.10). Denote the weak topology in $H^{1}$ by $\sigma(H^{1}, \text{BMO})$. (Meanwhile, the weak* topology in $\text{BMO}$, will be denoted by $\sigma(\text{BMO}, H^{1})$.)
+
+
+\textbf{Lemma 1.3.2.6.} Let $B \subseteq L^1$. Then the following assertions are equivalent.
+%\begin{enumerate}[(a)]
+%    \item $B$ is uniformly integrable;
+%    \item For any set sequence $\{F_k\}_k$, such that $F_k \downarrow \emptyset$, $\lim\limits_{k \to \infty} \sup\limits_{f\in B} \int_{F_k} |f| d\mu = 0$;
+%    \item For any disjoint set sequence $\{E_k\}_k$ satisfying $|E_k| \to 0$, 
+%    $\lim\limits_{k \to \infty} \sup\limits_{f\in B} \int_{E_k} |f| d\mu = 0.$
+%\end{enumerate}
+Check also Proposition 4.5.3 Bogachev I. p.267.
+
+At first, we examine the relation between the uniform integrability in $L^{1}$ and in $H^{1}$:
+
+\begin{lem}(see \cite[Lemma 2.6.1]{Long})
+Let ${K}$ be a set of measurable processes $X = (X_{n})_{n\geq 0}$, such that $\sup_{X\in K} {E}(M X) \leq C$. Suppose that for all measurable functions $S$ from $\Omega$ to $\mathbb{Z}^{+}$,
+\[
+{K}_{s} = \left\{ X_{s} : X \in K \right\}, \quad \text{with} \quad X_{s} = \sum_{n=0}^{\infty} X_{n} \chi_{\{S=n\}},
+\]
+is uniformly integrable in $L^{1}$. Then $M{K} = \{M X: X \in {K}\}$ is uniformly integrable in $L^{1}$ too.  
+\end{lem}
+
+\begin{proof} Suppose, by contradiction, that $M{K}$ is not uniformly integrable. Then there exists a disjoint sequence of measurable sets $\{B_{n}\}$ and $\{X^{(n)}\} \subset {K}$ such that
+\[
+\int_{B_{n}} MX^{(n)}  d\mu > 2\varepsilon,
+\]
+for some $\varepsilon > 0$, by means of Lemma 1.3.2.6. So there exists a measurable function $S_{n}$ from $B_{n}$ to $\mathbb{Z}^{+}$ such that
+\[
+\int_{B_{n}} |X^{(n)}_{S_n}|  d\mu \ge \varepsilon,
+\]
+This can be seen as follows. For any measurable process $X$ satisfying $M X < \infty$ a.e., and any $\varepsilon > 0$, define $S = \inf\{m : |X_{m}| > M X - \varepsilon\}$, which is a measurable function from $\Omega$ to $\mathbb{Z}^{+}$. For such $S$, we have
+$$\int_\Omega |X_S| d\mu \ge \int_\Omega M Xd\mu -\varepsilon.$$
+This proves the assertion. Now let $S$ be any measurable function from $\Omega$ to $\mathbb{Z}^{+}$ such that $S|_{B_n} = S_{n}$. Then
+\[
+\int_{B_{n}} |X_{S_{n}}^{(n)}| \, d\mu = \int_{B_{n}} |X_{S_{n}}^{(n)}| \ d\mu \ge \varepsilon.
+\]
+This would contradict the uniform integrability of ${K}_S$. The proof is finished.
+\end{proof}
+
+
+Now we can state one of our main theorems:
+
+\begin{thm}{(\cite{Long} Theorem 2.6.2)} Let ${K} \subset H^{1}$. Then ${K}$ is relatively weakly compact if and only if $M{K} = \{Mf : f \in {K}\}$ is uniformly integrable.
+\end{thm}
+\begin{proof}
+Assume $M K$ is uniformly integrable. We want to show that for all $\varphi \in B M O$, for all $\varepsilon>0$, there exists $N_0$, such that when $N \geq N_0$ we have
+$$
+\left|E\left(\sum_{n=N+1}^{\infty} f_n \xi_n\right)\right| \leq \varepsilon, \quad \forall f \in K,
+$$
+where $\left\{\xi_n\right\}$ is the associated sequence of $\varphi$ which occurs in (2.6.1-2.6.2). In fact, $\sum_0^N\left|\xi_n\right| \rightarrow \sum_0^{\infty}\left|\xi_n\right|$, a.e., and hence in measure. So for all $\delta>0$, there exists $N_0$ such that when $N \geq N_0$, we have
+$$
+\left|F_N\right|=\left|\left\{\omega: \sum_{N+1}^{\infty}\left|\xi_n\right|>\frac{\varepsilon}{2 C}\right\}\right| \leq \delta,
+$$
+where $C$ is chosen such that $C \geq \max \left(\sup _{f \in K} E(M f),\left\||\eta|+\sum_0^{\infty}\left|\xi_n\right|\right\|_{\infty}\right)$. When $\delta$ is chosen such that
+$$
+\int_F M f d \mu \leq \frac{\varepsilon}{2 C}, \quad \forall f \in K, \quad \text { provided }|F| \leq \delta,
+$$
+then for all $f \in K$, we have
+$$
+\begin{aligned}
+\left|E\left(\sum_{N+1}^{\infty} f_n \xi_n\right)\right| & \leq\left(\int_{F_N}+\int_{F_N^{\circ}}\right) \sum_{N+1}^{\infty} M f\left|\xi_n\right| d \mu \\
+& \leq C \int_{F_N} M f d \mu+\frac{\varepsilon}{2 C} \int_{\Omega} M f d \mu \leq \varepsilon .
+\end{aligned}
+$$
+
+This proves (2.6.4). Now we can conclude the weak relative compactness of $K$ from the uniform integrability of $M K$. The uniform integrability of $M K$ implies that $K \subset L^1$ is weak relative compact in the topology $\sigma\left(L^1, L^{\infty}\right)$. {\color{blue} $H^\infty \subset L^\infty\subset BMO$} (See for example Dunford-Schwartz [1] p.294, Corollary IV.8.11.) That means for any infinite subset of $K$, there exists a subsequence $\left\{f^{(i)}\right\} \subset K$ and $f \in L^1$ such that for all $g \in L^{\infty}$ we have
+$\lim _i E\left(f^{(i)} g\right)=E(f g)$. From the uniformity given by (2.6.4), for this subsequence $\left\{f^{(i)}\right\}$, we have
+$$
+\begin{aligned}
+\lim _{i \rightarrow \infty}\left\langle f^{(i)}, \varphi\right\rangle & =\lim _{i \rightarrow \infty} E\left(f^{(i)} \eta\right)+\lim _{i \rightarrow \infty} \sum_0^{\infty} E\left(f_n^{(i)} \xi_n\right) \\
+& =E(f \eta)+\sum_0^{\infty} \lim _{i \rightarrow \infty} E\left(f_n^{(i)} \xi_n\right) \\
+& =E(f \eta)+\sum_0^{\infty} \lim _{i \rightarrow \infty} E\left(E\left(f^{(i)} \xi_n \mid \mathcal{F}_n\right)\right) \\
+& =E(f \eta)+\sum_0^{\infty} \lim _{i \rightarrow \infty} E\left(f^{(i)} \xi_n\right)=E(f \eta)+\sum_0^{\infty} E\left(f \xi_n\right) \\
+& =E(f \eta)+\sum_0^{\infty} E\left(f_n \xi_n\right)=\langle f, \varphi\rangle .
+\end{aligned}
+$$
+
+We claim $f \in H_1$. In fact, for any measurable $S$ from $\Omega$ to $\mathbb{Z}^{+}$ taking
+$$
+\eta=0, \quad \xi_n=\operatorname{sgn} f_n \chi_{\{S=n\}},
+$$
+and substituting it into (2.6.5), we get
+$$
+\begin{aligned}
+E\left(\left|f_S\right|\right) & =\sum_0^{\infty} E\left(\left|f_n\right| \chi_{\{S=n\}}\right)=\sum_0^{\infty} E\left(f_n \xi_n\right) \\
+& \leq \sup _i\left|\sum_0^{\infty} E\left(f_n^{(i)} \xi_n\right)\right| \leq \sup _i \sum_0^{\infty} E\left(M f^{(i)}\left|\xi_n^{\prime}\right|\right) \leq C .
+\end{aligned}
+$$
+
+Taking "sup" over $S$, we see $f \in H_1$. This proves one half of the theorem.
+
+
+Conversely, now assume that $K$ is weak relative compact in $\sigma\left(H_1, B M O\right)$. Let $S$ be any measurable function from $\Omega$ to $\mathrm{Z}^{+}$. Then we can show that $K_S$ is weak relative compact in $\sigma\left(L^1, L^{\infty}\right)$. In fact assume $\left\{f^{(i)}\right\}$ being a convergent sequence of $H_1$ in the topology $\sigma\left(H_1, B M O\right)$ with the limit $f \in H_1$. Then for all $S$, and $g \in L^{\infty}$,
+$$
+E\left(f_S^{(i)} g\right)=E\left(\sum_0^{\infty} f_n^{(i)} g \chi_{\{S=n\}}\right)=E\left(\sum_0^{\infty} f_n^{(i)} \xi_n\right)
+$$
+is nothing, but $\left\langle f^{(i)}, \varphi\right\rangle$ with $\varphi=\sum E\left(\xi_n \mid \mathcal{F}_n\right) \in B M O$, where $\xi_n=g \chi_{\{S=n\}}$ satisfying $\sum_0^{\infty}\left|\xi_n\right| \leq\|g\|_{\infty}$, and hence
+$$
+E\left(f_S^{(i)} g\right)=\left\langle f^{(i)}, \varphi\right\rangle \rightarrow\langle f, \varphi\rangle .
+$$
+
+From the weak relative compactness characterization in $L_1$ (as cited above), we see that $K_S$ is uniformly integrable for all $S$. Noticing that $K$ is bounded in $H_1$ owing to its weak relative compactness, from Lemma 2.6.1, we see that $M K$ is uniformly integrable.
+\end{proof}
+
+\section{Non-commutative preliminaries}
+For $(\Omega, \mathcal{F}, P)$ with $(\mathcal{F}_n)_n$ define
+$$d_1 f =E(f|\mathcal{F}_1), \quad d_k f=E(f|\mathcal{F}_k)-E(f|\mathcal{F}_{k-1}), \quad k\ge2.$$
+$$S(f)=\left(\sum_{k\ge1} |d_kf|^2\right)^{1/2}.$$
+
+Let $a = (a_n)_{n \geq 0}$ be a finite sequence in $L^p(\mathcal{M})$. Define
+\[
+\|a\|_{L^p(\mathcal{M}; \ell^2_C)} = \left\|\left(\sum_{n \geq 0} |a_n|^2 \right)^{1/2}\right\|_p, \quad \|a\|_{L^p(\mathcal{M}; \ell^2_R)} = \left\|\left(\sum_{n \geq 0} |a_n^*|^2 \right)^{1/2}\right\|_p.
+\]
+This gives two norms on the family of all finite sequences in $L^p(\mathcal{M})$. To see that, denoting by $B(\ell^2)$ the algebra of all bounded operators on $\ell^2$ with its usual trace $\mathrm{tr}$, let us consider the von Neumann algebra tensor product $\mathcal{M} \otimes B(\ell^2)$ with the product trace $\tau \otimes \mathrm{tr}$. $\tau \otimes \mathrm{tr}$ is a semifinite faithful trace. The associated non-commutative $L^p$-space is denoted by $L^p(\mathcal{M} \otimes B(\ell^2))$. Now any finite sequence $a = (a_n)_{n \geq 0}$ in $L^p(\mathcal{M})$ can be regarded as an element in $L^p(\mathcal{M} \otimes B(\ell^2))$ via the following map:
+\[
+a \mapsto T(a) = \begin{pmatrix}
+a_0 & 0 & \cdots \\
+a_1 & 0 & \cdots \\
+\vdots & \vdots & \ddots
+\end{pmatrix},
+\]
+that is, the matrix of $T(a)$ has all vanishing entries except those in the first column which are the $a_n$'s. Such a matrix is called a column matrix, and the closure in $L^p(\mathcal{M} \otimes B(\ell^2))$ of all column matrices is called the column subspace of $L^p(\mathcal{M} \otimes B(\ell^2))$ (when $p = \infty$, we take the $w^*$-closure of all column matrices). Then
+\[
+\|a\|_{L^p(\mathcal{M}; \ell^2_C)} = \| |T(a)| \|_{L^p(\mathcal{M} \otimes B(\ell^2))} = \|T(a)\|_{L^p(\mathcal{M} \otimes B(\ell^2))}.
+\]
+
+Therefore, $\|\cdot\|_{L^p(\mathcal{M}; \ell^2_C)}$ defines a norm on the family of all finite sequences of $L^p(\mathcal{M})$. The corresponding completion (for $1 \leq p < \infty$) is a Banach space, denoted by $L^p(\mathcal{M}; \ell^2_C)$. Then $L^p(\mathcal{M}; \ell^2_C)$ is isometric to the column subspace of $L^p(\mathcal{M} \otimes B(\ell^2))$. For $p = \infty$ we let $L^\infty(\mathcal{M}; \ell^2_C)$ be the Banach space of sequences in $L^\infty(\mathcal{M})$ isometric by the above map $T$ to the column subspace of $L^\infty(\mathcal{M} \otimes B(\ell^2))$. It is easy to check that a sequence $a = (a_n)_{n \geq 0}$ in $L^p(\mathcal{M})$ belongs to $L^p(\mathcal{M}; \ell^2_C)$ iff
+\[
+\sup_{n \geq 0} \left\| \left( \sum_{k=0}^{n} |a_k|^2 \right)^{1/2} \right\|_p < \infty;
+\]
+if this is the case, $\left( \sum_{k=0}^{\infty} |a_k|^2 \right)^{1/2}$
+belongs to $L^p(\mathcal{M})$ and $\left( \sum_{k=0}^{n} |a_k|^2 \right)^{1/2}$
+converges to it in $L^p(\mathcal{M})$ (relative to the $w^*$-topology for $p = \infty$).
+
+Similarly (or passing to adjoints), we may show that $\|\cdot\|_{L^p(\mathcal{M}; \ell^2_R)}$ is a norm on the family of all finite sequences in $L^p(\mathcal{M})$. As above, it defines a Banach space $L^p(\mathcal{M}; \ell^2_R)$, which now is isometric to the row subspace of $L^p(\mathcal{M} \otimes B(\ell^2))$ consisting of matrices whose non-zero entries lie only in the first row.
+
+Observe that the column and row subspaces of $L^p(\mathcal{M} \otimes B(\ell^2))$ are 1-complemented subspaces. Therefore, from the classical duality between $L^p(\mathcal{M} \otimes B(\ell^2))$ and $L^q(\mathcal{M} \otimes B(\ell^2))$ where $\frac{1}{p} + \frac{1}{q} = 1$, $1 \leq p < \infty$, we deduce that
+$$L^p(\mathcal{M}; \ell^2_C)^* = L^q(\mathcal{M}; \ell^2_C)$$ and $$L^p(\mathcal{M}; \ell^2_R)^* = L^q(\mathcal{M}; \ell^2_R).$$ This complementation also shows that the families $\{L^p(\mathcal{M}; \ell^2_C)\}$ and $\{L^p(\mathcal{M}; \ell^2_R)\}$ are two interpolation scales, say, for instance, relative to the complex interpolation method.
+
+Note that, for any finite sequence $(a_n)_{n \geq 0}$ in $L^p(\mathcal{M})$, we have, using tensor product notation and denoting again by $\|\cdot\|_p$ the norm in $L^p(\mathcal{M} \otimes B(\ell^2))$,
+\[
+\left\|\left(\sum a_n^* a_n\right)^{1/2}\right\|_p = \left\|\sum a_n \otimes e_{n0}\right\|_p \quad \text{and} \quad \left\|\left(\sum a_n a_n^*\right)^{1/2}\right\|_p = \left\|\sum a_n \otimes e_{0n}\right\|_p.
+\]
+
+
+
+We now turn to the description of non-commutative martingales and their square
+functions. Let $\mathcal{M}$ be a finite von Neumann algebra with a normalized faithful normal trace $\tau$, and let $(\mathcal{M}_n)_{n\ge0}$ ( increasing sequence of von Neumann subalgebras of $\mathcal{M}$ such that $\cup_{n\ge0}$ generates $\mathcal{M}$ in the weak$^*$-topology) be its filtration. For $x\in L_1(\mathcal{M})$ define
+$$d_kx=E(x|\mathcal{M}_k)-E(x|\mathcal{M}_{k-1})=E_k(x)-E_{k-1}(x).$$
+Then $x=(E_n(x))_{n\ge1}$ is a non-commutative martingale.
+$$S_C(x)=\left(\sum_{k=1}^\infty |d_kx|^2\right)^{1/2}$$
+and 
+$$S_R(x)=\left(\sum_{k=1}^\infty |(d_kx)^*|^2\right)^{1/2}.$$
+The restriction of $\tau$ to $\mathcal{M}_n$ is still denoted by $\tau$. Let $E_n = E(\cdot | \mathcal{M}_n)$ be the conditional expectation of $\mathcal{M}$ with respect to $\mathcal{M}_n$. $E_n$ is a norm 1 projection of $L^p(\mathcal{M})$ onto $L^p(\mathcal{M}_n)$ for all $1 \leq p \leq \infty$, and $E_n(x) \geq 0$ whenever $x \geq 0$. A non-commutative $L^p$-martingale with respect to $(\mathcal{M}_n)_{n \geq 0}$ is a sequence $x = (x_n)_{n \geq 0}$ such that $x_n \in L^p(\mathcal{M}_n)$ and $E_m(x_n) = x_m$, $\forall m = 0, 1, \ldots, n.$
+
+Let $\|x\|_p = \sup_{n \geq 0} \|x_n\|_p$. If $\|x\|_p < \infty$, $x$ is said to be bounded.
+
+\textbf{Remark} Let $x_\infty \in L^p(\mathcal{M})$. Set $x_n = E_n(x_\infty)$ for all $n \geq 0$. Then $x = (x_n)$ is a bounded $L^p$-martingale and $\|x\|_p = \|x_\infty\|_p$; moreover, $x_n$ converges to $x_\infty$ in $L^p(\mathcal{M})$ (relative to the $w^*$-topology in the case $p = \infty$). Conversely, if $1 < p < \infty$, every bounded $L^p$-martingale converges in $L^p(\mathcal{M})$, and so is given by some $x_\infty \in L^p(\mathcal{M})$ as previously. Thus one can identify the space of all bounded $L^p$-martingales with $L^p(\mathcal{M})$ itself in the case $1 < p < \infty$ (see \cite{PX93}).
+
+
+Let $x$ be a martingale. Its difference sequence, denoted by $dx = (dx_n)_{n \geq 0}$, is defined as (with $x_{-1} = 0$ by convention)
+\[
+dx_n = x_n - x_{n-1}, \quad n \geq 0.
+\]
+Set
+\[
+S_{C,n}(x) = \left(\sum_{k=0}^{n} |dx_k|^2\right)^{1/2} \quad \text{and} \quad S_{R,n}(x) = \left(\sum_{k=0}^{n} |dx_k^*|^2\right)^{1/2}.
+\]
+By the preceding discussion $dx$ belongs to $L^p(\mathcal{M}; \ell^2_C)$ (resp. $L^p(\mathcal{M}; \ell^2_R)$) iff $(S_{C,n}(x))_{n \geq 0}$ (resp. $(S_{R,n}(x))_{n \geq 0}$) is a bounded sequence in $L^p(\mathcal{M})$; in this case,
+\[
+S_C(x) = \left(\sum_{k=0}^{\infty} |dx_k|^2\right)^{1/2} \quad \text{and} \quad S_R(x) = \left(\sum_{k=0}^{\infty} |dx_k^*|^2\right)^{1/2}
+\]
+are elements in $L^p(\mathcal{M})$. These are the non-commutative analogues of the usual square functions in the commutative martingale theory. It should be pointed out that one of $S_C(x)$ and $S_R(x)$ may exist as an element of $L^p(\mathcal{M})$ without the other making sense; in other words, the two sequences $S_{C,n}(x)$ and $S_{R,n}(x)$ may not be bounded in $L^p(\mathcal{M})$ at the same time.
+
+Let $1 \leq p < \infty$. Define $\mathcal{H}^p_C(\mathcal{M})$ (resp. $\mathcal{H}^p_R(\mathcal{M})$) to be the space of all $L^p$-martingales $x$ with respect to $(\mathcal{M}_n)_{n \geq 0}$ such that $dx \in L^p(\mathcal{M}; \ell^2_C)$ (resp. $dx \in L^p(\mathcal{M}; \ell^2_R)$), and set
+\[
+\|x\|_{\mathcal{H}^p_C(\mathcal{M})} = \|dx\|_{L^p(\mathcal{M}; \ell^2_C)}, \quad \|x\|_{\mathcal{H}^p_R(\mathcal{M})} = \|dx\|_{L^p(\mathcal{M}; \ell^2_R)}.
+\]
+Equipped respectively with the previous norms, $\mathcal{H}^p_C(\mathcal{M})$ and $\mathcal{H}^p_R(\mathcal{M})$ are Banach spaces.
+
+Note that if $x \in \mathcal{H}^p_C(\mathcal{M})$,
+\[
+\|x\|_{\mathcal{H}^p_C(\mathcal{M})} = \sup_{n \geq 0} \|S_{C,n}(x)\|_p = \|S_C(x)\|_p,
+\]
+and similar equalities hold for $\mathcal{H}^p_R(\mathcal{M})$. Then we define the Hardy spaces of non-commutative martingales as follows: if $1 \leq p < 2$,
+\[
+\mathcal{H}^p(\mathcal{M}) = \mathcal{H}^p_C(\mathcal{M}) + \mathcal{H}^p_R(\mathcal{M})
+\]
+equipped with the norm
+\[
+\|x\|_{\mathcal{H}^p(\mathcal{M})} = \inf \left\{ \|y\|_{\mathcal{H}^p_C(\mathcal{M})} + \|z\|_{\mathcal{H}^p_R(\mathcal{M})} : x = y + z, \, y \in \mathcal{H}^p_C(\mathcal{M}), \, z \in \mathcal{H}^p_R(\mathcal{M}) \right\};
+\]
+and if $2 \leq p < \infty$,
+\[
+\mathcal{H}^p(\mathcal{M}) = \mathcal{H}^p_C(\mathcal{M}) \cap \mathcal{H}^p_R(\mathcal{M})
+\]
+equipped with the norm
+\[
+\|x\|_{\mathcal{H}^p(\mathcal{M})} = \max\{\|x\|_{\mathcal{H}^p_C(\mathcal{M})}, \|x\|_{\mathcal{H}^p_R(\mathcal{M})}\}.
+\]
+The reason that we have defined $\mathcal{H}^p(\mathcal{M})$ differently according to $1 \leq p < 2$ or $2 \leq p < \infty$ will become clear in the next section, where we will show that $\mathcal{H}^p(\mathcal{M}) = L^p(\mathcal{M})$ with equivalent norms for all $1 < p < \infty$ (\cite{PX93}).
+
+$$\mathcal{H}^1_C(\mathcal{M})=\{x\in L_2(\mathcal{M}): \ S_C(x)\in L_1(\mathcal{M})\}$$
+$$\mathcal{H}^1_R(\mathcal{M})=\{x\in L_2(\mathcal{M}): \ S_R(x)\in L_1(\mathcal{M})\},$$
+and 
+$$\mathcal{H}^1(\mathcal{M})=\mathcal{H}^1_C+\mathcal{H}^1_R.$$
+
+$$(\mathcal{H}^1_C)^*=BMO_C, \quad (\mathcal{H}^1_R)^*=BMO_R$$
+and
+$$(\mathcal{H}^1(\mathcal{M}))^*=BMO_C \cap BMO_R = BMO,$$
+see \cite[Appendix]{PX93} for the duality between $\mathcal{H}^1$ and $BMO.$
+
+{\bf Conjecture.} $K\subset \mathcal{H}^1(\mathcal{M})$ is relatively weakly compact if and only if 
+$$SK=\{S_C(f^c) \ \text{or } S_R(f^R): \quad f=f^C+f^R, \ f\in K\}$$
+is relatively weakly compact in $L_1(\mathcal{M})$ (or uniformly integrable, i.e. for every $\varepsilon>0$ there is $\delta>0$ such that 
+$$\sup_{x\in K}\tau(pxp)<\varepsilon$$
+for every $p\in P(\mathcal{M})$ with $\tau(p^\perp)<\delta$).
+
+{\bf Non-commutative analogue of $H^1.$} As usual $(\mathcal{M}_n)_n \uparrow \mathcal{M}$ and $\tau(\mathbf{1})=1.$
+$$H_1^{\rm max}(\mathcal{M}) =\{x\in L_1(\mathcal{M}): \quad (E_n(x))_{n\ge0} \in L_1(\mathcal{M}, \ell_\infty) \}.$$
+Here $E_n(x)\in L_1(\mathcal{M}_n)$ for every $n.$
+
+What is $L_1(\mathcal{M}, \ell_\infty)?$ Define
+$$\norm{(a_n)_{n\ge0}}_{L_1(\mathcal{M}, \ell_\infty)}=\inf \{ \norm{A}_1: \ a_n \le A \ \forall n, \ A\in L_1(\mathcal{M}) \}.$$
+
+$$L_1(\mathcal{M}, \ell_\infty)=\{a=(a_n)_n: \quad \norm{a}_{L_1(\mathcal{M},\ell_\infty)}\}<\infty.$$
+
+
+\begin{thebibliography}{99}
+\bibitem{Long} Long R.L., Martingale spaces and inequalities. Peking University Press, Beijing; Friedr. Vieweg \& Sohn, Braunschweig, 1993. 346 pp.
+
+\bibitem{PX93} Pisier G., Xu Q., Non-commutative martingale inequalities. Comm. Math. Phys. 189 (1997), no.3, 667--698.
+
+
+
+
+\end{thebibliography}
+
+
+\end{document} 
+
+
+
